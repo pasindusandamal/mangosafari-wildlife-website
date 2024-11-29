@@ -3,513 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MangoSafari - Wildlife Adventure</title>
+    <title>MangoSafari - Unforgettable Wildlife Adventures</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
-    <style>
-        :root {
-            --primary: #2ecc71;
-            --secondary: #27ae60;
-            --accent: #f39c12;
-            --dark: #2c3e50;
-            --light: #ecf0f1;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Navbar Styles */
-        .nav-container {
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.4s ease;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
-
-        .nav ul {
-            display: flex;
-            list-style: none;
-            padding: 1.5rem 5%;
-            align-items: center;
-            margin: 0;
-        }
-
-        .nav ul li {
-            margin: 0 1.5rem;
-        }
-
-        .site-name {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .site-name span {
-            color: var(--accent);
-        }
-
-        .nav a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav a:hover::after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .home {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/hendrik-cornelissen-jpTT_SAU034-unsplash.jpg') center/cover;
-            display: flex;
-            align-items: center;
-            padding: 0 10%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .text {
-            color: var(--white);
-            max-width: 600px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .t2 h3 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .t2 span {
-            color: var(--accent);
-            display: block;
-        }
-
-        .t2 p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--primary);
-            color: var(--white);
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            text-transform: uppercase;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 5rem 10%;
-            background: var(--light);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-card i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        /* Gallery Section */
-        .gallery {
-            padding: 5rem 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .section-title p {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            height: 300px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: -100%;
-            left: 0;
-            width: 100%;
-            padding: 1.5rem;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: var(--white);
-            transition: bottom 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            bottom: 0;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 5rem 10%;
-            background: var(--light);
-        }
-
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .testimonial-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin: 0 1rem;
-        }
-
-        .testimonial-card img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-        }
-
-        .testimonial-card h3 {
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-
-        .testimonial-card p {
-            font-style: italic;
-            color: #666;
-        }
-
-        .testimonial-card {
-    background: var(--white);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    margin: 0 1rem;
-    height: 300px; /* Set a fixed height */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.testimonial-card-content {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4; /* Limit to 4 lines */
-    -webkit-box-orient: vertical;
-}
-
-        /* Call to Action */
-        .cta {
-            padding: 5rem 10%;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta .btn {
-            background: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background: var(--accent);
-            color: var(--white);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--dark);
-            color: var(--white);
-            padding: 4rem 10% 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-col h3 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-col ul li a {
-            color: var(--white);
-            text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer-col ul li a:hover {
-            opacity: 1;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            transition: transform 0.3s ease;
-        }
-
-        .social-links a:hover {
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav ul li:not(:first-child):not(:last-child) {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .nav ul {
-                justify-content: space-between;
-            }
-
-            .t2 h3 {
-                font-size: 2.5rem;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 80%;
-            height: 100%;
-            background: var(--white);
-            z-index: 1001;
-            padding: 2rem;
-            transition: left 0.3s ease;
-        }
-
-        .mobile-menu.active {
-            left: 0;
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-        }
-
-        .mobile-menu ul li {
-            margin-bottom: 1rem;
-        }
-
-        .mobile-menu a {
-            color: var(--dark);
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        .close-menu {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <div class="nav-container" id="m-nav">
-        <div class="nav">
+    <header class="nav-container" id="m-nav">
+        <nav class="nav">
             <ul>
                 <li><a class="site-name" href="#">Mango<span>Safari</span></a></li>
                 <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#packages">Packages</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="hamburger"><i class="fas fa-bars"></i></li>
             </ul>
-        </div>
-    </div>
+        </nav>
+    </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu">
         <i class="fas fa-times close-menu"></i>
         <ul>
             <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#packages">Packages</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </div>
 
-    <!-- Hero Section -->
     <section id="home" class="home">
         <div class="text">
             <div class="t2 animate__animated animate__fadeInUp">
-                <h3>Discover the <span>Wild</span></h3>
+                <h1>Discover the <span>Wild</span></h1>
                 <p>Embark on an unforgettable journey through nature's most spectacular wilderness. Experience the thrill of wildlife up close and create memories that will last a lifetime.</p>
                 <button class="btn">Start Your Adventure</button>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
+    <section id="about" class="about-us">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="./images/about-safari.jpg" alt="About MangoSafari">
+                </div>
+                <div class="about-text">
+                    <h2>About MangoSafari</h2>
+                    <p>At MangoSafari, we're passionate about providing extraordinary wildlife experiences while promoting conservation and sustainable tourism. Our expert guides and carefully crafted itineraries ensure that every adventure is both thrilling and educational.</p>
+                    <p>With over a decade of experience, we've mastered the art of creating perfect safari experiences tailored to your preferences. Join us in exploring the wonders of nature and wildlife in their natural habitats.</p>
+                    <a href="#" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="features" class="features">
         <div class="section-title">
             <h2>Why Choose Us</h2>
@@ -536,10 +92,19 @@
                 <h3>Eco-Friendly</h3>
                 <p>Sustainable tourism practices that protect wildlife and nature.</p>
             </div>
+            <div class="feature-card">
+                <i class="fas fa-bed"></i>
+                <h3>Luxury Accommodation</h3>
+                <p>Comfortable and stylish lodges that blend with the natural surroundings.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Small Groups</h3>
+                <p>Intimate safari experiences with small groups for personalized attention.</p>
+            </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="section-title">
             <h2>Safari Gallery</h2>
@@ -547,31 +112,105 @@
         </div>
         <div class="gallery-grid">
             <div class="gallery-item">
-                <img src="./images/cassie-lafferty-Y2pH9NuO84w-unsplash.jpg" alt="Wildlife 1">
+                <img src="./images/cassie-lafferty-Y2pH9NuO84w-unsplash.jpg" alt="African Lions">
                 <div class="gallery-overlay">
                     <h3>African Lions</h3>
                     <p>Witness the kings of the jungle in their natural habitat.</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="./images/72.jpg" alt="Wildlife 2">
+                <img src="./images/72.jpg" alt="Elephants">
                 <div class="gallery-overlay">
                     <h3>Elephants</h3>
                     <p>Experience the gentle giants up close.</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="./images/71.jpg" alt="Wildlife 3">
+                <img src="./images/71.jpg" alt="Zebras">
                 <div class="gallery-overlay">
                     <h3>Zebras</h3>
                     <p>Watch herds of zebras roaming freely.</p>
                 </div>
             </div>
+            <div class="gallery-item">
+                <img src="./images/giraffe.jpg" alt="Giraffes">
+                <div class="gallery-overlay">
+                    <h3>Giraffes</h3>
+                    <p>Marvel at these majestic long-necked beauties.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="./images/rhino.jpg" alt="Rhinoceros">
+                <div class="gallery-overlay">
+                    <h3>Rhinoceros</h3>
+                    <p>Encounter the powerful and endangered rhinos.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="./images/cheetah.jpg" alt="Cheetah">
+                <div class="gallery-overlay">
+                    <h3>Cheetah</h3>
+                    <p>Spot the world's fastest land animal in action.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <section id="packages" class="safari-packages">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Safari Packages</h2>
+                <p>Choose from our carefully curated safari experiences.</p>
+            </div>
+            <div class="package-grid">
+                <div class="package-card">
+                    <img src="./images/savannah-safari.jpg" alt="Savannah Explorer">
+                    <div class="package-content">
+                        <h3>Savannah Explorer</h3>
+                        <p>A 7-day adventure through the iconic African savannah, perfect for first-time safari-goers.</p>
+                        <ul>
+                            <li>Game drives in top national parks</li>
+                            <li>Luxury lodge accommodation</li>
+                            <li>Guided bush walks</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="./images/wildlife-photographer.jpg" alt="Wildlife Photographer's Dream">
+                    <div class="package-content">
+                        <h3>Wildlife Photographer's Dream</h3>
+                        <p>A 10-day safari designed for photography enthusiasts, with expert guidance and prime shooting locations.</p>
+                        <ul>
+                            <li>Photography workshops</li>
+                            <li>Specially designed vehicles for photographers</li>
+                            <li>Visits to hidden gems for unique shots</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="package-card">
+                    <img src="./images/luxury-safari.jpg" alt="Luxury Safari Retreat">
+                    <div class="package-content">
+                        <h3>Luxury Safari Retreat</h3>
+                        <p>A 14-day indulgent safari experience combining wildlife viewing with ultimate relaxation and comfort.</p>
+                        <ul>
+                            <li>5-star eco-lodges and tented camps</li>
+                            <li>Private guide and vehicle</li>
+                            <li>Gourmet dining experiences</li>
+                        </ul>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="testimonials" class="testimonials">
+        <div class="section-title">
+            <h2>What Our Visitors Say</h2>
+            <p>Read about the experiences of our satisfied adventurers.</p>
+        </div>
         <div class="testimonial-slider">
             <div class="testimonial-card">
                 <img src="/api/placeholder/80/80" alt="John Doe">
@@ -597,22 +236,22 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
     <section class="cta">
         <h2>Ready for Your Adventure?</h2>
         <p>Book your safari experience today and create unforgettable memories.</p>
         <button class="btn">Book Now</button>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-col">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#packages">Packages</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -649,45 +288,8 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-    <script>
-        // Mobile Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const closeMenu = document.querySelector('.close-menu');
-
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-        });
-
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-        });
-
-        // Testimonial Carousel
-        $('.testimonial-slider').slick({
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    adaptiveHeight: false, // Change this to false
-    autoplay: true,
-    autoplaySpeed: 5000
-});
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('.nav-container');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
-                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-            } else {
-                nav.style.background = 'transparent';
-                nav.style.boxShadow = 'none';
-            }
-        });
-    </script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
