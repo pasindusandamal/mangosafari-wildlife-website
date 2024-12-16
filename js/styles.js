@@ -33,3 +33,66 @@ autoplaySpeed: 5000
           nav.style.boxShadow = 'none';
       }
   });
+
+
+  // Add this to your JavaScript file
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize all deal timers
+    const dealCards = document.querySelectorAll('.deal-card');
+    
+    dealCards.forEach(card => {
+        const expiryDate = new Date(card.dataset.expires);
+        updateTimer(card, expiryDate);
+        
+        // Update timer every second
+        setInterval(() => {
+            updateTimer(card, expiryDate);
+        }, 1000);
+    });
+    
+    function updateTimer(card, expiryDate) {
+        const now = new Date();
+        const timeLeft = expiryDate - now;
+        
+        if (timeLeft <= 0) {
+            // Deal has expired
+            card.classList.add('expired');
+            card.querySelector('.deal-timer').innerHTML = '<div class="expired-message">Deal Expired</div>';
+            return;
+        }
+        
+        // Calculate time units
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        
+        // Update timer display
+        card.querySelector('.days').textContent = padNumber(days);
+        card.querySelector('.hours').textContent = padNumber(hours);
+        card.querySelector('.minutes').textContent = padNumber(minutes);
+        card.querySelector('.seconds').textContent = padNumber(seconds);
+        
+        // Add urgency class if less than 24 hours remaining
+        if (timeLeft < (24 * 60 * 60 * 1000)) {
+            card.querySelector('.deal-timer').classList.add('urgent');
+        }
+    }
+    
+    function padNumber(number) {
+        return number.toString().padStart(2, '0');
+    }
+    
+    // Optional: Add booking functionality
+    const bookButtons = document.querySelectorAll('.btn-book');
+    bookButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const card = e.target.closest('.deal-card');
+            const dealTitle = card.querySelector('h3').textContent;
+            const price = card.querySelector('.discounted').textContent;
+            
+            // Add your booking logic here
+            alert(`Booking ${dealTitle} for ${price}`);
+        });
+    });
+});
