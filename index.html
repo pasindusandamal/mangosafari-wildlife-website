@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MangoSafari - Wildlife Adventure</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
@@ -22,11 +23,11 @@
         <div class="nav">
             <ul>
                 <li><a class="site-name" href="#">Mango<span>Safari</span></a></li>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./features.html">Features</a></li>
+                <li><a href="./gallery.html">Gallery</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="./contact.html">Contact</a></li>
                 <li class="hamburger"><i class="fas fa-bars"></i></li>
             </ul>
         </div>
@@ -116,6 +117,287 @@
         </div>
     </section>
 
+    <!-- Packages Section -->
+<section id="packages" class="packages">
+    <div class="section-title">
+        <h2>Safari Packages</h2>
+        <p>Choose from our carefully curated safari experiences</p>
+    </div>
+    <div class="packages-grid">
+        <div class="package-card">
+            <div class="package-image">
+                <img src="./images/basic-safari.jpg" alt="Basic Safari Package">
+                <div class="package-tag">Popular</div>
+            </div>
+            <div class="package-content">
+                <h3>Basic Adventure</h3>
+                <div class="package-details">
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>3 Days</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-users"></i>
+                        <span>Up to 6 people</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-utensils"></i>
+                        <span>Meals Included</span>
+                    </div>
+                </div>
+                <p>Perfect introduction to wildlife safari with guided tours and basic accommodations.</p>
+                <div class="package-footer">
+                    <div class="price">From $599</div>
+                    <button class="btn-small">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="package-card">
+            <div class="package-image">
+                <img src="./images/premium-safari.jpg" alt="Premium Safari Package">
+                <div class="package-tag">Luxury</div>
+            </div>
+            <div class="package-content">
+                <h3>Premium Experience</h3>
+                <div class="package-details">
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>5 Days</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-users"></i>
+                        <span>Up to 4 people</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-star"></i>
+                        <span>Luxury Lodge</span>
+                    </div>
+                </div>
+                <p>Exclusive safari experience with luxury accommodations and private guide.</p>
+                <div class="package-footer">
+                    <div class="price">From $1,299</div>
+                    <button class="btn-small">Book Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="package-card">
+            <div class="package-image">
+                <img src="./images/photo-safari.jpg" alt="Photography Safari Package">
+                <div class="package-tag">Special</div>
+            </div>
+            <div class="package-content">
+                <h3>Photography Special</h3>
+                <div class="package-details">
+                    <div class="detail-item">
+                        <i class="fas fa-clock"></i>
+                        <span>4 Days</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-camera"></i>
+                        <span>Photo Guide</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-bed"></i>
+                        <span>Deluxe Stay</span>
+                    </div>
+                </div>
+                <p>Specialized tour focused on wildlife photography with expert guidance.</p>
+                <div class="package-footer">
+                    <div class="price">From $899</div>
+                    <button class="btn-small">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Virtual Tour Section -->
+<section id="virtual-tour" class="virtual-tour">
+    <div class="section-title">
+        <h2>Virtual Safari Experience</h2>
+        <p>Take a 360° tour of our amazing safari locations</p>
+    </div>
+    
+    <div class="tour-container">
+        <div class="tour-navigation">
+            <button class="tour-nav-btn active" data-scene="savannah">
+                <i class="fas fa-tree"></i>
+                <span>Savannah</span>
+            </button>
+            <button class="tour-nav-btn" data-scene="camp">
+                <i class="fas fa-campground"></i>
+                <span>Luxury Camp</span>
+            </button>
+            <button class="tour-nav-btn" data-scene="waterhole">
+                <i class="fas fa-water"></i>
+                <span>Waterhole</span>
+            </button>
+        </div>
+
+        <div class="tour-viewer">
+            <div class="tour-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>Loading Virtual Tour...</span>
+            </div>
+            
+            <div class="tour-controls">
+                <button class="control-btn" id="fullscreen">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button class="control-btn" id="vr-mode">
+                    <i class="fas fa-vr-cardboard"></i>
+                </button>
+            </div>
+
+            <div class="tour-scene" id="aframe-tour">
+                <a-scene embedded loading-screen="enabled: false">
+                    <a-assets>
+                        <!-- Replace with placeholder equirectangular images -->
+                        <img id="savannah-sky" src="https://pannellum.org/images/cerro-toco-0.jpg" />
+                        <img id="camp-sky" src="./images/bryan-goff-IuyhXAia8EA-unsplash.jpg" />
+                        <img id="waterhole-sky" src="https://pannellum.org/images/examplepano.jpg" />
+                    </a-assets>
+                    <a-sky id="skybox" src="#savannah-sky" rotation="0 -90 0"></a-sky>
+                    <a-camera look-controls="reverseMouseDrag: true">
+                        <a-cursor color="#FFFFFF"></a-cursor>
+                    </a-camera>
+
+                    <!-- Info hotspots for Savannah -->
+                    <a-entity class="hotspot savannah-hotspot" position="-8 2 -4">
+                        <a-sphere radius="0.2" color="#2ecc71" animation="property: scale; to: 1.2 1.2 1.2; dir: alternate; loop: true"></a-sphere>
+                        <a-text value="Giraffe Spotting Area" position="1 0 0" scale="1.5 1.5 1.5" color="#FFFFFF"></a-text>
+                    </a-entity>
+                </a-scene>
+            </div>
+        </div>
+
+        <div class="tour-info">
+            <div class="info-card active" data-scene="savannah">
+                <h3>Savannah Plains</h3>
+                <p>Experience the vast savannah where you'll encounter diverse wildlife including lions, giraffes, and zebras.</p>
+                <ul>
+                    <li><i class="fas fa-camera"></i> Prime photography spots</li>
+                    <li><i class="fas fa-binoculars"></i> Excellent wildlife viewing</li>
+                    <li><i class="fas fa-sun"></i> Best visited during sunrise</li>
+                </ul>
+            </div>
+
+            <div class="info-card" data-scene="camp">
+                <h3>Luxury Safari Camp</h3>
+                <p>Our luxury tented camp offers comfort without compromising the authentic safari experience.</p>
+                <ul>
+                    <li><i class="fas fa-bed"></i> Luxury accommodations</li>
+                    <li><i class="fas fa-utensils"></i> Gourmet dining</li>
+                    <li><i class="fas fa-wifi"></i> Modern amenities</li>
+                </ul>
+            </div>
+
+            <div class="info-card" data-scene="waterhole">
+                <h3>Natural Waterhole</h3>
+                <p>A natural gathering spot for wildlife, perfect for observing animals in their natural habitat.</p>
+                <ul>
+                    <li><i class="fas fa-clock"></i> Active during dawn and dusk</li>
+                    <li><i class="fas fa-elephant"></i> Regular elephant sightings</li>
+                    <li><i class="fas fa-camera-retro"></i> Hidden photo blinds</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Last Minute Deals Section -->
+<section id="last-minute" class="last-minute">
+    <div class="section-title">
+        <h2>Last Minute Deals</h2>
+        <p>Grab these special offers before they expire</p>
+    </div>
+
+    <div class="deals-grid">
+        <!-- Deal Card 1 -->
+        <div class="deal-card" data-expires="2024-12-25T00:00:00">
+            <div class="deal-badge">Save 30%</div>
+            <div class="deal-image">
+                <img src="./images/deal-safari-1.jpg" alt="Safari Deal">
+                <div class="deal-timer">
+                    <div class="timer-item">
+                        <span class="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="minutes">00</span>
+                        <span class="label">Mins</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="seconds">00</span>
+                        <span class="label">Secs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deal-content">
+                <h3>Weekend Wildlife Explorer</h3>
+                <div class="deal-details">
+                    <span><i class="fas fa-calendar"></i> 2 Days, 1 Night</span>
+                    <span><i class="fas fa-users"></i> Max 4 people</span>
+                </div>
+                <div class="deal-price">
+                    <div class="original">$599</div>
+                    <div class="discounted">$419</div>
+                </div>
+                <p>Quick weekend getaway including luxury accommodation and guided safari tours.</p>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+
+        <!-- Deal Card 2 -->
+        <div class="deal-card" data-expires="2024-12-20T00:00:00">
+            <div class="deal-badge">Save 40%</div>
+            <div class="deal-image">
+                <img src="./images/deal-safari-2.jpg" alt="Safari Deal">
+                <div class="deal-timer">
+                    <div class="timer-item">
+                        <span class="days">00</span>
+                        <span class="label">Days</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="hours">00</span>
+                        <span class="label">Hours</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="minutes">00</span>
+                        <span class="label">Mins</span>
+                    </div>
+                    <div class="timer-item">
+                        <span class="seconds">00</span>
+                        <span class="label">Secs</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deal-content">
+                <h3>Photography Special</h3>
+                <div class="deal-details">
+                    <span><i class="fas fa-calendar"></i> 3 Days, 2 Nights</span>
+                    <span><i class="fas fa-camera"></i> Photo Guide Included</span>
+                </div>
+                <div class="deal-price">
+                    <div class="original">$899</div>
+                    <div class="discounted">$539</div>
+                </div>
+                <p>Special photography-focused safari with professional guide and premium viewing spots.</p>
+                <button class="btn-book">Book Now</button>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials">
         <div class="testimonial-slider">
@@ -199,5 +481,62 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
    <script src="./js/styles.js"></script>
+   <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+
+   <script>
+    // Add this script to your existing JavaScript file
+document.addEventListener('DOMContentLoaded', function() {
+    // Scene switching functionality
+    const navButtons = document.querySelectorAll('.tour-nav-btn');
+    const infoCards = document.querySelectorAll('.info-card');
+    const skybox = document.querySelector('#skybox');
+
+    navButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const scene = this.dataset.scene;
+            
+            // Update navigation buttons
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update info cards
+            infoCards.forEach(card => {
+                card.classList.remove('active');
+                if (card.dataset.scene === scene) {
+                    card.classList.add('active');
+                }
+            });
+            
+            // Update skybox
+            skybox.setAttribute('src', `#${scene}-sky`);
+        });
+    });
+
+    // Fullscreen functionality
+    const fullscreenBtn = document.getElementById('fullscreen');
+    const tourViewer = document.querySelector('.tour-viewer');
+
+    fullscreenBtn.addEventListener('click', function() {
+        if (!document.fullscreenElement) {
+            tourViewer.requestFullscreen().catch(err => {
+                console.log(`Error attempting to enable fullscreen: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    });
+
+    // VR mode functionality (if supported)
+    const vrBtn = document.getElementById('vr-mode');
+    vrBtn.addEventListener('click', function() {
+        const scene = document.querySelector('a-scene');
+        if (scene.is('vr-mode')) {
+            scene.exitVR();
+        } else {
+            scene.enterVR();
+        }
+    });
+});
+   </script>
 </body>
 </html>
